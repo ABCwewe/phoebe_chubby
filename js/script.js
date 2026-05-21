@@ -17,6 +17,7 @@ let CACHES = {
             "audio/chubby_0.mp3",
             "audio/chubby_1.mp3",
             "audio/chubby_2.mp3",
+            "audio/phoeba_chubby.mp3",
             "audio/phoebe_chubby_0.mp3",
             "audio/phoebe_chubby_1.mp3",
             "audio/phoebe_chubby_2.mp3",
