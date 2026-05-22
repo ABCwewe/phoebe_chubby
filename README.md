@@ -19,6 +19,7 @@ The art the relevant copyright of Wuthering Waves belongs to KURO GAMES.<br>
 ## Voice Source | 语音来源
  - <https://www.bilibili.com/video/BV1PAPSzuEQ8>
  - <https://www.bilibili.com/video/BV1EcPaz2EY7>
+ - <https://www.bilibili.com/video/BV1cZ5L6DEQN>
  - <https://soundinstants.com/zh/sound/phoebechubby>
 
 ## Thanks
