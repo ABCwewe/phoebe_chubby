@@ -16,7 +16,7 @@ Phoebe emojis modified from | 菲比表情包来源 : [kurobbs](https://www.kuro
 The art the relevant copyright of Wuthering Waves belongs to KURO GAMES.<br>
 角色版权归库洛游戏所有。
 
-## Voice Source | 语音来源
+## Voice Sources | 语音来源
  - <https://www.bilibili.com/video/BV1PAPSzuEQ8>
  - <https://www.bilibili.com/video/BV1EcPaz2EY7>
  - <https://www.bilibili.com/video/BV1cZ5L6DEQN>
