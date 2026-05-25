@@ -26,4 +26,5 @@ The art the relevant copyright of Wuthering Waves belongs to KURO GAMES.<br>
  - <https://soundinstants.com/zh/sound/phoebechubby>
 
 ## Thanks
-Thanks website [Kafka Kuru](https://github.com/Genius-Society/kafka_kuru), where our inspirations and the super-original code from.
+ - Thanks website [Kafka Kuru](https://github.com/Genius-Society/kafka_kuru), where our inspirations and the super-original code from.
+ - <https://vocalremover.org>
