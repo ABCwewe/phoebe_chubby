@@ -243,7 +243,7 @@ let CACHES = {
             window.open("https://www.kurobbs.com/mc/home/9", "_blank");
         });
         $("#show-audio-src").on("click", function () {
-            window.open("https://www.bilibili.com/video/BV1EcPaz2EY7", "_blank");
+            window.open("https://www.bilibili.com/video/BV19LkuBHEbJ", "_blank");
         });
     }
 
