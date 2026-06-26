@@ -266,7 +266,7 @@ async function pickMediaBase() {
             counterButton.innerText = "菲比啾比~";
         });
         $("#show-options-opt").on("click", function () {
-            window.open("https://github.com/Genius-Society/kafka_kuru", "_blank");
+            window.open("https://github.com/Genius-Society/phoebe_chubby", "_blank");
         });
         $("#show-gif-src").on("click", function () {
             window.open("https://www.kurobbs.com/mc/home/9", "_blank");
