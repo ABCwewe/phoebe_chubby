@@ -189,12 +189,10 @@ async function pickMediaBase() {
         elem.style.zIndex = "-10";
         document.body.appendChild(elem);
         const startSlide = () => {
-            // 以图片真实高度定位，并把图底约束在 wrapper-background-filter 底以内（允许负 top，图从上方飞入）
+            // 以图片真实高度定位；整体下调，顶部不低于视口上沿
             const imgH = elem.naturalHeight || elem.height || 0;
-            const filter = document.getElementById("wrapper-background-filter");
-            const filterBottom = (filter ? filter.getBoundingClientRect().bottom : 0) + scrollY;
             let top = counterButton.getClientRects()[0].bottom + scrollY - 430;
-            if (imgH > 0 && top + imgH > filterBottom) top = filterBottom - imgH;
+            if (imgH > 0 && top < 0) top = 0;
             elem.style.top = top + "px";
             let pos = -500;
             const limit = window.innerWidth + 500;
