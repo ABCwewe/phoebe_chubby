@@ -2,7 +2,7 @@
 
 [![auto-sync](https://github.com/Genius-Society/phoebe_chubby/actions/workflows/auto-sync.yml/badge.svg)](https://github.com/Genius-Society/phoebe_chubby/actions/workflows/auto-sync.yml)
 [![license](https://img.shields.io/badge/license-CC--BY--NC--SA-74c853.svg)](./LICENSE)
-[![cloudflare](https://img.shields.io/badge/cloudflare-phoebe--chubby-f6821f.svg)](https://phoebe-chubby.pages.dev)
+[![cloudflare](https://img.shields.io/badge/cloudflare-菲比啾比-f6821f.svg)](https://菲比啾比.com)
 [![ms](https://img.shields.io/badge/modelscope-phoebe__chubby-624aff.svg)](https://www.modelscope.cn/studios/Genius-Society/phoebe_chubby)
 [![bili](https://img.shields.io/badge/bilibili-BV19LkuBHEbJ-fc8bab.svg)](https://www.bilibili.com/video/BV19LkuBHEbJ)
 
@@ -26,5 +26,6 @@ The art the relevant copyright of Wuthering Waves belongs to KURO GAMES.<br>
  - <https://soundinstants.com/zh/sound/phoebechubby>
 
 ## Thanks
+ - Thanks creator [Genius-Society](https://github.com/Genius-Society) .
  - Thanks website [Kafka Kuru](https://github.com/Genius-Society/kafka_kuru), where our inspirations and the super-original code from.
  - <https://vocalremover.org>

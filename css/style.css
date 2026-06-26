@@ -349,3 +349,29 @@ h2 {
     top: 0px;
     left: 0px;
 }
+
+/* ===== 核心防剧透类 ===== 
+        用法：直接添加到任何 <span> 或 <a> 上
+        例如：<span class="spoiler">秘密内容</span>
+*/
+.spoiler {
+    background: #000;           /* 黑色背景覆盖文字 */
+    color: #000;               /* 文字与背景同色 → 完全隐藏 */
+    transition: color 0.25s ease; /* 柔和过渡 */
+    cursor: default;           /* 默认鼠标样式（如需点击可改为 pointer） */
+    text-decoration: none;     /* 针对 <a> 去除下划线 */
+    user-select: none;         /* 防止文字被选中 */
+    /* 无圆角、无边框、无内外边距，完全内联 */
+}
+
+/* 悬停时文字变为白色，瞬间显现 */
+.spoiler:hover {
+    color: #fff;
+}
+
+/* （可选）如果想在悬停时改变背景亮度，可取消注释下面两行 */
+/*
+.spoiler:hover {
+    background: #1a1a1a;        
+}
+*/

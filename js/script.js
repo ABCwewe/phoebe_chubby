@@ -2,9 +2,9 @@ let CACHES = {
     "_": { defaultLanguage: "cn", defaultVOLanguage: "cn" },
     "cn": {
         texts: {
-            "page-title": "菲比洗脑网&nbsp;",
+            "page-title": "菲比啾比&nbsp;",
             "doc-title": "菲比啾比~",
-            "page-descriptions": "给菲比写的小网站，对，就是《鸣潮》隐海修会中的 <del>幕后黑手</del> 表情包之王！",
+            "page-descriptions": "她能有什么坏心思呢，只是一只人畜无害的菲比啾比 <span class=\"spoiler\" title=\"你知道的太多了\">幕后黑手</span> 罢了。",
             "counter-descriptions": ["菲比已经啾比~了", "已经菲比啾比了"],
             "counter-unit": ["次", "下", "回"],
             "counter-button": ["加载中...", "请稍候..."],
