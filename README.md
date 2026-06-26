@@ -6,7 +6,7 @@
 [![ms](https://img.shields.io/badge/modelscope-phoebe__chubby-624aff.svg)](https://www.modelscope.cn/studios/Genius-Society/phoebe_chubby)
 [![bili](https://img.shields.io/badge/bilibili-BV19LkuBHEbJ-fc8bab.svg)](https://www.bilibili.com/video/BV19LkuBHEbJ)
 
-<div align="center"><a href="https://phoebe-chubby.pages.dev"><img src="./img/phoebe.png"></a></div>
+<div align="center"><a href="https://菲比啾比.com"><img src="./img/phoebe.png"></a></div>
 
 <p align="center">The website for Phoebe, the cutest priest Wuthering Waves character out there!<br>献给《鸣潮》最可爱的教士菲比</p>
 
