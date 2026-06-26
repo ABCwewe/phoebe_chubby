@@ -39,6 +39,32 @@ let CACHES = {
     ]
 };
 
+// 静态资源走 jsDelivr 国内镜像；启动时并行探测，取首个可达的镜像作为基准
+const REPO_REF = "Genius-Society/phoebe_chubby@207ba4c";
+const CDN_BASES = [
+    "https://jsd.cdn.zzko.cn/gh/" + REPO_REF,     // 国内优先
+    "https://gcore.jsdelivr.net/gh/" + REPO_REF,
+    "https://fastly.jsdelivr.net/gh/" + REPO_REF,
+    "https://cdn.jsdelivr.net/gh/" + REPO_REF,
+    "https://testingcf.jsdelivr.net/gh/" + REPO_REF,
+];
+let mediaBase = CDN_BASES[0]; // 探测结果会在启动时覆盖
+
+async function pickMediaBase() {
+    const probe = base => new Promise(resolve => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("HEAD", base + "/img/favicon.ico", true);
+        xhr.timeout = 3000;
+        xhr.onload = () => resolve(xhr.status >= 200 && xhr.status < 400 ? base : null);
+        xhr.onerror = xhr.ontimeout = () => resolve(null);
+        xhr.send();
+    });
+    const results = await Promise.all(CDN_BASES.map(probe));
+    for (let i = 0; i < CDN_BASES.length; i++) {
+        if (results[i]) { mediaBase = CDN_BASES[i]; return; }
+    }
+}
+
 (() => {
     const $ = mdui.$;
     let progress = [0, 1];
@@ -77,7 +103,7 @@ let CACHES = {
         });
         refreshDynamicTexts();
         // sets the image of element with id "phoebe-card" to the translated version in the selected language.
-        document.getElementById("phoebe-card").src = curLang.cardImage;
+        document.getElementById("phoebe-card").src = mediaBase + "/" + curLang.cardImage;
     };
 
     // function that returns the list of audio files for the selected language
@@ -94,7 +120,7 @@ let CACHES = {
                 for (let i = 0; i < audioList.length; i++) {
                     const url = audioList[i];
                     if (typeof url === "string" && url.endsWith(".mp3")) {
-                        promises.push(loadAndEncode(url).then(result => dict[lang].audioList[i] = result));
+                        promises.push(loadAndEncode(mediaBase + "/" + url).then(result => dict[lang].audioList[i] = result));
                     }
                 }
             }
@@ -158,7 +184,7 @@ let CACHES = {
     function animatePhoebe() {
         let id = null;
         const elem = document.createElement("img");
-        elem.src = CACHES["gifs"][Math.floor(Math.random() * 3)];
+        elem.src = mediaBase + "/" + CACHES["gifs"][Math.floor(Math.random() * 3)];
         elem.style.position = "absolute";
         elem.style.right = "-500px";
         elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 430 + "px"
@@ -222,9 +248,13 @@ let CACHES = {
         });
     }
 
-    window.onload = function () {
+    window.onload = async function () {
         // display counter
         localCounter.textContent = localCount.toLocaleString("en-US");
+        // 探测可用镜像后再加载资源
+        await pickMediaBase();
+        const titleImg = document.getElementById("title-img");
+        if (titleImg) titleImg.src = mediaBase + "/img/phoebe.png";
         // the function multiLangMutation is called initially when the page loads.
         multiLangMutation();
         // Calling method
