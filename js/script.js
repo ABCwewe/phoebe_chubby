@@ -4,7 +4,7 @@ let CACHES = {
         texts: {
             "page-title": "菲比洗脑网&nbsp;",
             "doc-title": "菲比啾比~",
-            "page-descriptions": "给菲比写的小网站，对，就是《鸣潮》隐海修会中的 <del>白丝魅魔</del> 表情包之王！",
+            "page-descriptions": "给菲比写的小网站，对，就是《鸣潮》隐海修会中的 <del>幕后黑手</del> 表情包之王！",
             "counter-descriptions": ["菲比已经啾比~了", "已经菲比啾比了"],
             "counter-unit": ["次", "下", "回"],
             "counter-button": ["加载中...", "请稍候..."],
@@ -186,21 +186,31 @@ async function pickMediaBase() {
         elem.src = mediaBase + "/" + CACHES["gifs"][Math.floor(Math.random() * 3)];
         elem.style.position = "absolute";
         elem.style.right = "-500px";
-        elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 430 + "px"
         elem.style.zIndex = "-10";
         document.body.appendChild(elem);
-        let pos = -500;
-        const limit = window.innerWidth + 500;
-        clearInterval(id);
-        id = setInterval(() => {
-            if (pos >= limit) {
-                clearInterval(id);
-                elem.remove()
-            } else {
-                pos += 20;
-                elem.style.right = pos + "px";
-            }
-        }, 12);
+        const startSlide = () => {
+            // 以图片真实高度定位，并把图底约束在 wrapper-background-filter 底以内（允许负 top，图从上方飞入）
+            const imgH = elem.naturalHeight || elem.height || 0;
+            const filter = document.getElementById("wrapper-background-filter");
+            const filterBottom = (filter ? filter.getBoundingClientRect().bottom : 0) + scrollY;
+            let top = counterButton.getClientRects()[0].bottom + scrollY - 430;
+            if (imgH > 0 && top + imgH > filterBottom) top = filterBottom - imgH;
+            elem.style.top = top + "px";
+            let pos = -500;
+            const limit = window.innerWidth + 500;
+            clearInterval(id);
+            id = setInterval(() => {
+                if (pos >= limit) {
+                    clearInterval(id);
+                    elem.remove()
+                } else {
+                    pos += 20;
+                    elem.style.right = pos + "px";
+                }
+            }, 12);
+        };
+        if (elem.complete && elem.naturalHeight) startSlide();
+        else elem.onload = startSlide;
     };
 
     // This function creates ripples on a button click and removes it after 300ms.
