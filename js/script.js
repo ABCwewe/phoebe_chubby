@@ -42,9 +42,7 @@ let CACHES = {
 // 静态资源走 jsDelivr 国内镜像；启动时并行探测，取首个可达的镜像作为基准
 const REPO_REF = "Genius-Society/phoebe_chubby@207ba4c";
 const CDN_BASES = [
-    "https://jsd.cdn.zzko.cn/gh/" + REPO_REF,     // 国内优先
     "https://gcore.jsdelivr.net/gh/" + REPO_REF,
-    "https://fastly.jsdelivr.net/gh/" + REPO_REF,
     "https://cdn.jsdelivr.net/gh/" + REPO_REF,
     "https://testingcf.jsdelivr.net/gh/" + REPO_REF,
 ];
