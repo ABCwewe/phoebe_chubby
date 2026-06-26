@@ -186,29 +186,21 @@ async function pickMediaBase() {
         elem.src = mediaBase + "/" + CACHES["gifs"][Math.floor(Math.random() * 3)];
         elem.style.position = "absolute";
         elem.style.right = "-500px";
+        elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 490 + "px"
         elem.style.zIndex = "-10";
         document.body.appendChild(elem);
-        const startSlide = () => {
-            // 以图片真实高度定位；整体下调，顶部不低于视口上沿
-            const imgH = elem.naturalHeight || elem.height || 0;
-            let top = counterButton.getClientRects()[0].bottom + scrollY - 430;
-            if (imgH > 0 && top < 0) top = 0;
-            elem.style.top = top + "px";
-            let pos = -500;
-            const limit = window.innerWidth + 500;
-            clearInterval(id);
-            id = setInterval(() => {
-                if (pos >= limit) {
-                    clearInterval(id);
-                    elem.remove()
-                } else {
-                    pos += 20;
-                    elem.style.right = pos + "px";
-                }
-            }, 12);
-        };
-        if (elem.complete && elem.naturalHeight) startSlide();
-        else elem.onload = startSlide;
+        let pos = -500;
+        const limit = window.innerWidth + 500;
+        clearInterval(id);
+        id = setInterval(() => {
+            if (pos >= limit) {
+                clearInterval(id);
+                elem.remove()
+            } else {
+                pos += 20;
+                elem.style.right = pos + "px";
+            }
+        }, 12);
     };
 
     // This function creates ripples on a button click and removes it after 300ms.

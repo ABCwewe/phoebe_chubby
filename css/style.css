@@ -29,9 +29,7 @@ body {
     background-color: #edd8a4;
     position: absolute;
     width: 100%;
-    /* 向下加宽色带，覆盖平移图片下调后的背景区域 */
-    top: 0;
-    height: calc(100% + 200px);
+    height: 100%;
     z-index: -20;
 }
 
