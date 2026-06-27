@@ -32,7 +32,7 @@ let CACHES = {
         ],
         cardImage: "img/card.png"
     },
-    gifs: [
+    pngs: [
         "img/phoebe_0.png",
         "img/phoebe_1.png",
         "img/phoebe_2.png"
@@ -123,12 +123,12 @@ async function pickMediaBase() {
                     }
                 }
             }
-            const gifList = dict["gifs"];
-            if (Array.isArray(gifList)) {
-                for (let i = 0; i < gifList.length; i++) {
-                    const url = gifList[i];
-                    if (typeof url === "string" && url.endsWith(".gif")) {
-                        promises.push(loadAndEncode(url, "image/gif").then(result => dict["gifs"][i] = result));
+            const pngList = dict["pngs"];
+            if (Array.isArray(pngList)) {
+                for (let i = 0; i < pngList.length; i++) {
+                    const url = pngList[i];
+                    if (typeof url === "string" && url.endsWith(".png")) {
+                        promises.push(loadAndEncode(mediaBase + "/" + url).then(result => dict["pngs"][i] = result));
                     }
                 }
             }
@@ -183,7 +183,7 @@ async function pickMediaBase() {
     function animatePhoebe() {
         let id = null;
         const elem = document.createElement("img");
-        elem.src = mediaBase + "/" + CACHES["gifs"][Math.floor(Math.random() * 3)];
+        elem.src = CACHES["pngs"][Math.floor(Math.random() * 3)];
         elem.style.position = "absolute";
         elem.style.right = "-500px";
         elem.style.top = counterButton.getClientRects()[0].bottom + scrollY - 490 + "px"
@@ -222,7 +222,26 @@ async function pickMediaBase() {
         counterButton.innerText = `${((progress[0] / progress[1]) * 100) | 0}%`
     }
 
-    function loadAndEncode(url, datype = "audio/mpeg") {
+    // 按文件扩展名推断 MIME，避免 data URL 的媒体类型与内容不符导致渲染/播放失败
+    function inferMimeType(url, fallback = "application/octet-stream") {
+        const ext = url.split("?")[0].split(".").pop().toLowerCase();
+        const map = {
+            "mp3": "audio/mpeg",
+            "png": "image/png",
+            "jpg": "image/jpeg",
+            "jpeg": "image/jpeg",
+            "gif": "image/gif",
+            "webp": "image/webp",
+            "svg": "image/svg+xml",
+            "ico": "image/x-icon",
+            "webm": "video/webm",
+            "mp4": "video/mp4",
+        };
+        return Object.prototype.hasOwnProperty.call(map, ext) ? map[ext] : fallback;
+    }
+
+    function loadAndEncode(url, datype) {
+        if (!datype) datype = inferMimeType(url);
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.open("GET", url, true);
@@ -268,7 +287,7 @@ async function pickMediaBase() {
         $("#show-options-opt").on("click", function () {
             window.open("https://github.com/Genius-Society/phoebe_chubby", "_blank");
         });
-        $("#show-gif-src").on("click", function () {
+        $("#show-png-src").on("click", function () {
             window.open("https://www.kurobbs.com/mc/home/9", "_blank");
         });
         $("#show-audio-src").on("click", function () {
